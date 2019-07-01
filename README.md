@@ -4,6 +4,6 @@ Repository used for the Kyber Network tutorial, which will be delivered as part 
 
 # Progress Report: Expected Delivery 31.07.2019
 
-* Initial Kick of blog article:  https://dev.cloudburo.net/2019/07/01/dao-project-work-announcement-kyberdao-proposal.html
+* Initial kick off blog article:  https://dev.cloudburo.net/2019/07/01/dao-project-work-announcement-kyberdao-proposal.html
 
 
