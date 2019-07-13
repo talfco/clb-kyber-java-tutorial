@@ -1,6 +1,8 @@
 package net.cloudburo.kyber.tutorial;
 
+import java.io.FileReader;
 import java.math.BigDecimal;
+import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,11 +55,15 @@ public class Application {
         log.info("Connected to Ethereum client version: "
                 + web3j.web3ClientVersion().send().getWeb3ClientVersion());
 
+        Properties props = new Properties();
+        FileReader fi = new FileReader("secret/secret.properties");
+        props.load(fi);
+        String pw = (String)props.get("wallet-password");
         // We then need to load our Ethereum wallet file
         // FIXME: Generate a new wallet file using the web3j command line tools https://docs.web3j.io/command_line.html
         Credentials credentials =
                 WalletUtils.loadCredentials(
-                        "test",
+                        pw,
                         "secret/wallet.json");
         log.info("Credentials loaded");
 
