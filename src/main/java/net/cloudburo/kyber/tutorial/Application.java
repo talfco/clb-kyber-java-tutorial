@@ -48,16 +48,17 @@ public class Application {
 
     private void run() throws Exception {
 
-        // We start by creating a new web3j instance to connect to remote nodes on the network.
-        // Note: if using web3j Android, use Web3jFactory.build(...
-        Web3j web3j = Web3j.build(new HttpService(
-                "https://ropsten.infura.io/v3/dbbbc196b84949beae0c7eb321c00421"));  // FIXME: Enter your Infura token here;
-        log.info("Connected to Ethereum client version: "
-                + web3j.web3ClientVersion().send().getWeb3ClientVersion());
-
         Properties props = new Properties();
         FileReader fi = new FileReader("secret/secret.properties");
         props.load(fi);
+
+        // We start by creating a new web3j instance to connect to remote nodes on the network.
+        // Note: if using web3j Android, use Web3jFactory.build(...
+        Web3j web3j = Web3j.build(new HttpService(
+                "https://ropsten.infura.io/v3/"+props.get("infura-token")));  // FIXME: Enter your Infura token here;
+        log.info("Connected to Ethereum client version: "
+                + web3j.web3ClientVersion().send().getWeb3ClientVersion());
+
         String pw = (String)props.get("wallet-password");
         // We then need to load our Ethereum wallet file
         // FIXME: Generate a new wallet file using the web3j command line tools https://docs.web3j.io/command_line.html
