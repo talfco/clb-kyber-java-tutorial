@@ -1,5 +1,6 @@
 package net.cloudburo.kyber.tutorial.protocol;
 
+import net.cloudburo.kyber.tutorial.Param;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
@@ -8,11 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.web3j.protocol.Service;
 import org.web3j.protocol.exceptions.ClientConnectionException;
+import org.web3j.protocol.core.Request;
+import org.web3j.protocol.core.Response;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class KyberService extends Service {
@@ -84,9 +88,25 @@ public class KyberService extends Service {
     }
 
     @Override
-    protected InputStream performIO(String request) throws IOException {
+    public <T extends Response> T send(
+            Request request, Class<T> responseType) throws IOException {
+        String payload = objectMapper.writeValueAsString(request);
 
-        RequestBody requestBody = RequestBody.create(JSON_MEDIA_TYPE, request);
+        try (InputStream result = performIO(request)) {
+            if (result != null) {
+                return objectMapper.readValue(result, responseType);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    @Override
+    protected InputStream performIO(String request) throws IOException {return null;}
+
+    protected InputStream performIO(org.web3j.protocol.core.Request request) throws IOException {
+
+        //RequestBody requestBody = RequestBody.create(JSON_MEDIA_TYPE, request);
         Headers headers = buildHeaders();
 
         //okhttp3.Request httpRequest = new okhttp3.Request.Builder()
@@ -95,11 +115,30 @@ public class KyberService extends Service {
         //        .post(requestBody)
         //        .build();
 
-        okhttp3.Request httpRequest =new okhttp3.Request.Builder()
-                .url(url+"currencies")
-                .headers(headers)
-                .get()
-                .build();
+        List<Param> params =  request.getParams();
+        String op = params.get(0).getValue();
+        String qry = "";
+        if (params.size()>1) {
+            qry+="?";
+            for (Param param : params) {
+                if (!param.getValue().equals(op))
+                    qry += param.toString() + "&";
+            }
+            qry = qry.substring(0,qry.length()-1);
+        }
+
+        okhttp3.Request httpRequest;
+
+        if (op.equals(Param.OPS_GET)) {
+
+            httpRequest = new okhttp3.Request.Builder()
+                    .url(url + request.getMethod()+qry)
+                    .headers(headers)
+                    .get()
+                    .build();
+        } else {
+            throw new IOException("Not supported");
+        }
 
         okhttp3.Response response = httpClient.newCall(httpRequest).execute();
         processHeaders(response.headers());

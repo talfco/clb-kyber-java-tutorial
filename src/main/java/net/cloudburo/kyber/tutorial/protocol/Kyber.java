@@ -7,4 +7,5 @@ import org.web3j.protocol.core.Request;
 public interface Kyber {
 
     public Request<?, Currencies> currencies();
+    public Request<?, BuyRate> buyRate(String id, String qty,boolean onlyOfficialReserve);
 }

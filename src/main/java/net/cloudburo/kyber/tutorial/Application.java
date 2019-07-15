@@ -2,6 +2,7 @@ package net.cloudburo.kyber.tutorial;
 
 import java.io.FileReader;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Properties;
 
 import net.cloudburo.kyber.tutorial.protocol.Kyber3j;
@@ -91,9 +92,13 @@ public class Application {
         KyberService srv = new KyberService(KyberService.KYBER_ROPSTEN);
         Kyber3j kyber3j = Kyber3j.build(srv);
         try {
-            Request req  = kyber3j.currencies();
-            Currencies obj = (Currencies)req.send();
-            log.info("Exists Currency KNC: " + obj.existsCurreny("KNC"));
+            Currencies currencies = kyber3j.currencies().send();
+            log.info("Exists Currency KNC: " + currencies.existsCurreny("KNC"));
+            if (currencies.existsCurreny("KNC")) {
+                BuyRate rate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"300", false).send();
+                Float price = rate.getData().get(0).getSrc_qty().get(0);
+                log.info("Conversion Rate: "+price.toString());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
