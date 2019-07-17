@@ -1,6 +1,5 @@
 package net.cloudburo.kyber.tutorial.protocol;
 
-import net.cloudburo.kyber.tutorial.Param;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;

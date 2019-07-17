@@ -4,7 +4,7 @@ import org.web3j.protocol.Web3jService;
 
 import java.util.concurrent.ScheduledExecutorService;
 
-public interface Kyber3j extends Kyber {
+public interface Kyber3j extends KyberAPI {
 
     /**
      * Construct a new Web3j instance.

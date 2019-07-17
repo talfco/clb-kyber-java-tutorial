@@ -1,13 +1,11 @@
 package net.cloudburo.kyber.tutorial.protocol;
 
-import net.cloudburo.kyber.tutorial.Param;
 import net.cloudburo.kyber.tutorial.methods.response.*;
 
 import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.Request;
 import org.web3j.utils.Async;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 

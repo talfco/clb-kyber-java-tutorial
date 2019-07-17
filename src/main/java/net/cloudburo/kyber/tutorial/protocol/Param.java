@@ -1,4 +1,4 @@
-package net.cloudburo.kyber.tutorial;
+package net.cloudburo.kyber.tutorial.protocol;
 
 public class Param {
 

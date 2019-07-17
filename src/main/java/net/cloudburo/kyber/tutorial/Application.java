@@ -23,7 +23,7 @@ import org.web3j.utils.Convert;
 
 
 /**
- * A simple web3j application that demonstrates a number of core features of the Kyber network:
+ * A simple web3j application that demonstrates a number of core features of the KyberAPI network:
  *
  * <ol>
  *     <li>Connecting to a node on the Ethereum network</li>
