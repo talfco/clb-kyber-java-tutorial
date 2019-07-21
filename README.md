@@ -21,19 +21,46 @@ The scenario consists of the following step
 
 * check for the tokens supported on the Kyber Network, in our case the `KNC` token
 * get the KNC/ETH buy rates
-* convert ETH to KNC
+* get the trade data record
+* sign and execute the transactions
 
-
-        KyberService srv = new KyberService(KyberService.KYBER_ROPSTEN);
-        Kyber3j kyber3j = Kyber3j.build(srv);
+    private void eth2knc() {
+        Kyber3j kyber3j = Kyber3j.build(new KyberService(KyberService.KYBER_ROPSTEN));
+        log.info("Connected to Kyber Network: "+KyberService.KYBER_ROPSTEN);
+        // Buy KNC from ETH
         try {
+            // Check if token is supported
             Currencies currencies = kyber3j.currencies().send();
             log.info("Exists Currency KNC: " + currencies.existsCurreny("KNC"));
-            if (currencies.existsCurreny("KNC")) {
-                BuyRate rates = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"300", false).send();
-                Float price = rates.getData().get(0).getSrc_qty().get(0);
-                log.info("Conversion Rate: "+price.toString());
+            if (!checkForError(currencies) && currencies.existsCurreny("KNC")) {
+                // Get buy rates
+                BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"1",
+                        false).send();
+                if (!checkForError(buyRate)) {
+                    Rates rates = buyRate.getData().get(0);
+                    SingleRate singleRate = rates.getSingleRate(0);
+                    log.info("Conversion Rates: " + singleRate.getSrc_qty());
+                    // Get tradeData
+                    // Adjust conversion rates to 97%
+                    singleRate.approximateReceivableToken(0.97);
+                    TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
+                    if (!checkForError(tradeData)) {
+                        TradeData.TradeDataRecord rec = tradeData.getData().get(0);
+                        RawTransaction rawTransaction = RawTransaction.createTransaction(
+                                rec.getNonceAsBI(),  rec.getGasPriceAsBI(), rec.getGasLimitAsBI(),
+                                rec.getTo(), rec.getValueAsBI(), rec.getData());
+                        byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
+                        String hexValue = Numeric.toHexString(signedMessage);
+                        log.info("Signe Message with Hex Value: "+hexValue);
+                        //EthSendTransaction ethTrx = web3j.ethSendRawTransaction(hexValue).send();
+                        EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
+                        log.info("Executed transaction "+ethSendTransaction.getTransactionHash());
+                        // poll for transaction response via org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
+                        return;
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }

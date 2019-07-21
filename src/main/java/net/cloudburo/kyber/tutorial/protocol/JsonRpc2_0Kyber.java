@@ -70,8 +70,6 @@ public class JsonRpc2_0Kyber implements Kyber3j {
                 TradeData.class);
     }
 
-    // TODO tradeData interface isn't compliant with the other ones
-    // {"error":true,"reason":"param_error","additional_data":"src_qty is not a valid number"}
     public  Request<?,TradeData> tradeData(String userAddress, SingleRate rate, GasPriceRange gasPrice) {
         List<Param> params = List.of(
                 new Param("op",Param.OPS_GET),new Param("user_address",userAddress),

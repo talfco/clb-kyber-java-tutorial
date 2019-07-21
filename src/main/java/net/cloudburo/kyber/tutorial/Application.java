@@ -2,6 +2,7 @@ package net.cloudburo.kyber.tutorial;
 
 import java.io.FileReader;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Properties;
 
 import net.cloudburo.kyber.tutorial.methods.request.GasPriceRange;
@@ -15,13 +16,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.web3j.crypto.Credentials;
+import org.web3j.crypto.RawTransaction;
+import org.web3j.crypto.TransactionEncoder;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.Response;
+import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.Transfer;
 import org.web3j.utils.Convert;
+import org.web3j.utils.Numeric;
 
 
 /**
@@ -60,7 +65,7 @@ public class Application {
         props.load(fi);
 
         // We start by creating a new web3j instance to connect to remote nodes on the network.
-        Web3j web3j = Web3j.build(new HttpService(
+        web3j = Web3j.build(new HttpService(
                 "https://ropsten.infura.io/v3/"+props.get("infura-token")));  // FIXME: Enter your Infura token here;
         log.info("Connected to Ethereum client version: "
                 + web3j.web3ClientVersion().send().getWeb3ClientVersion());
@@ -107,7 +112,7 @@ public class Application {
             log.info("Exists Currency KNC: " + currencies.existsCurreny("KNC"));
             if (!checkForError(currencies) && currencies.existsCurreny("KNC")) {
                 // Get buy rates
-                BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"300",
+                BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"1",
                         false).send();
                 if (!checkForError(buyRate)) {
                     Rates rates = buyRate.getData().get(0);
@@ -118,11 +123,19 @@ public class Application {
                     singleRate.approximateReceivableToken(0.97);
                     TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
                     if (!checkForError(tradeData)) {
-
+                        TradeData.TradeDataRecord rec = tradeData.getData().get(0);
+                        RawTransaction rawTransaction = RawTransaction.createTransaction(
+                                rec.getNonceAsBI(),  rec.getGasPriceAsBI(), rec.getGasLimitAsBI(),
+                                rec.getTo(), rec.getValueAsBI(), rec.getData());
+                        byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
+                        String hexValue = Numeric.toHexString(signedMessage);
+                        log.info("Signe Message with Hex Value: "+hexValue);
+                        //EthSendTransaction ethTrx = web3j.ethSendRawTransaction(hexValue).send();
+                        EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
+                        log.info("Executed transaction "+ethSendTransaction.getTransactionHash());
+                        // poll for transaction response via org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
                         return;
                     }
-                    else
-                        log.info("Received Trade Data " + tradeData.getData().getFrom());
                 }
             }
         } catch (Exception e) {
