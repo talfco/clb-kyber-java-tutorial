@@ -15,14 +15,23 @@ As an implementation strategy an enhancement of the well-known [web3j](https://w
 
 web3j is a highly modular, reactive, type safe Java and Android library for working with Smart Contracts and integrating with clients (nodes) on the Ethereum network.
 
+## Scenario 1: Perform ETH -> KNC (ERC20 token) conversion
+
+The scenario consists of the following step
+
+* check for the tokens supported on the Kyber Network, in our case the `KNC` token
+* get the KNC/ETH buy rates
+* convert ETH to KNC
+
+
         KyberService srv = new KyberService(KyberService.KYBER_ROPSTEN);
         Kyber3j kyber3j = Kyber3j.build(srv);
         try {
             Currencies currencies = kyber3j.currencies().send();
             log.info("Exists Currency KNC: " + currencies.existsCurreny("KNC"));
             if (currencies.existsCurreny("KNC")) {
-                BuyRate rate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"300", false).send();
-                Float price = rate.getData().get(0).getSrc_qty().get(0);
+                BuyRate rates = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"300", false).send();
+                Float price = rates.getData().get(0).getSrc_qty().get(0);
                 log.info("Conversion Rate: "+price.toString());
             }
         } catch (Exception e) {

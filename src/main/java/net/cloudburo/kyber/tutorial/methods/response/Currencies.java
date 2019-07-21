@@ -5,11 +5,9 @@ import org.web3j.protocol.core.Response;
 import java.util.List;
 
 
-public class Currencies extends Response<Currencies> {
+public class Currencies extends KyberReponse<Currencies> {
 
-    public Currencies getCurrencies() { return getResult(); }
     private List<Currencies.Currency> data;
-    private boolean error;
 
     public Currency getCurrency(String symbol) {
         return data.stream()
@@ -26,17 +24,7 @@ public class Currencies extends Response<Currencies> {
         return data;
     }
 
-    public void setData(List<Currency> data) {
-        this.data = data;
-    }
-
-    public boolean hasError() {
-       return error;
-    }
-
-    public void setError(boolean error) {
-        this.error = error;
-    }
+    public void setData(List<Currency> data) { this.data = data; }
 
     public static class Currency {
         public Currency() {}

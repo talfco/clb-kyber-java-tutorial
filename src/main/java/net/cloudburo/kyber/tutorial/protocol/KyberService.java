@@ -20,21 +20,16 @@ import java.util.Map;
 
 public class KyberService extends Service {
 
+    public static final String DEFAULT_URL = "http://localhost:8545/";
     public static final String KYBER_ROPSTEN = "https://ropsten-api.kyber.network/";
 
-    public static final MediaType JSON_MEDIA_TYPE
-            = MediaType.parse("application/json; charset=utf-8");
-
+    public static final MediaType JSON_MEDIA_TYPE  = MediaType.parse("application/json; charset=utf-8");
     private static final Logger log = LoggerFactory.getLogger(KyberService.class);
 
     private OkHttpClient httpClient;
-
     private final String url;
-
     private final boolean includeRawResponse;
-
     private HashMap<String, String> headers = new HashMap<>();
-    public static final String DEFAULT_URL = "http://localhost:8545/";
 
     public KyberService(String url, OkHttpClient httpClient, boolean includeRawResponses) {
         super(includeRawResponses);
@@ -125,6 +120,7 @@ public class KyberService extends Service {
             }
             qry = qry.substring(0,qry.length()-1);
         }
+        log.debug("Request Query "+qry);
 
         okhttp3.Request httpRequest;
 

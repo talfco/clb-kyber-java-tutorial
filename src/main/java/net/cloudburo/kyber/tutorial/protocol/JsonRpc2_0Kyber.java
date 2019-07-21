@@ -1,5 +1,8 @@
 package net.cloudburo.kyber.tutorial.protocol;
 
+import net.cloudburo.kyber.tutorial.methods.request.GasPriceRange;
+import net.cloudburo.kyber.tutorial.methods.request.Rates;
+import net.cloudburo.kyber.tutorial.methods.request.SingleRate;
 import net.cloudburo.kyber.tutorial.methods.response.*;
 
 import org.web3j.protocol.Web3jService;
@@ -15,7 +18,6 @@ public class JsonRpc2_0Kyber implements Kyber3j {
 
     protected final Web3jService web3jService;
     private final long blockTime;
-    //private final JsonRpc2_0Rx web3jRx;
     private final ScheduledExecutorService scheduledExecutorService;
 
     public JsonRpc2_0Kyber(Web3jService web3jService) {
@@ -42,7 +44,10 @@ public class JsonRpc2_0Kyber implements Kyber3j {
     }
 
     public Request<?, BuyRate> buyRate(String id, String qty,boolean onlyOfficialReserve) {
-        List<Param> params = List.of(new Param("op",Param.OPS_GET),new Param("id",id),new Param("qty",qty));
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),
+                new Param("id",id),new Param("qty",qty),
+                new Param("only_official_reserve", Boolean.valueOf(onlyOfficialReserve).toString()));
         return new Request<>(
                 "buy_rate",
                 params,
@@ -50,9 +55,36 @@ public class JsonRpc2_0Kyber implements Kyber3j {
                 BuyRate.class);
     }
 
+    public  Request<?,TradeData> tradeData(String userAddress, String srcId, String dstId, Float srcQty, Float minDstQty,
+                                           GasPriceRange gasPrice, String walletId, boolean onlyOfficialReserve) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),new Param("user_address",userAddress),
+                new Param("src_id",srcId), new Param("dst_id",dstId), new Param("src_qty",srcQty.toString()),
+                new Param("min_dst_qty",minDstQty.toString()),new Param("gas_price",gasPrice.name()),
+                new Param("wallet_id",walletId),
+                new Param( "only_official_reserve", Boolean.valueOf(onlyOfficialReserve).toString()));
+        return new Request<>(
+                "trade_data",
+                params,
+                web3jService,
+                TradeData.class);
+    }
+
+    // TODO tradeData interface isn't compliant with the other ones
+    // {"error":true,"reason":"param_error","additional_data":"src_qty is not a valid number"}
+    public  Request<?,TradeData> tradeData(String userAddress, SingleRate rate, GasPriceRange gasPrice) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),new Param("user_address",userAddress),
+                new Param("src_id", rate.getSrc_id()), new Param("dst_id", rate.getDst_id()),
+                new Param("src_qty", rate.getSrc_qty().toString()),  new Param("min_dst_qty", rate.getDst_qty().toString()),
+                new Param("gas_price",gasPrice.name()));
+        return new Request<>(
+                "trade_data",
+                params,
+                web3jService,
+                TradeData.class);
+    }
 
     @Override
-    public void shutdown() {
-
-    }
+    public void shutdown() { }
 }
