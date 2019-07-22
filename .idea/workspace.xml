@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" line="103" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" line="126" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28d1ea52-b761-4cf1-beca-b7c67c232fa6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnableTokenTransfer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EtherRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/SellRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -74,11 +80,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="104" selection-start-line="104" selection-end-line="143" selection-end-column="5" />
+            <state relative-caret-position="264">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,65 +92,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="147">
-                <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-              </first_editor>
-              <second_editor />
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
+              <folding>
+                <element signature="e#1148#1149#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.3.1/5614d05e565296772794ada5c18b47513b2ccd99/core-4.3.1-sources.jar!/org/web3j/protocol/core/JsonRpc2_0Web3j.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="322" selection-start-line="322" selection-end-line="322" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.3.1/5614d05e565296772794ada5c18b47513b2ccd99/core-4.3.1-sources.jar!/org/web3j/protocol/core/Ethereum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="112" column="74" selection-start-line="112" selection-start-column="56" selection-end-line="112" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/crypto/4.3.1/2d7080315251f11cea4e400862dfa7e3e8c12216/crypto-4.3.1-sources.jar!/org/web3j/crypto/RawTransaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="52" column="28" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="58" column="68" lean-forward="true" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="68" />
+            <state relative-caret-position="289">
+              <caret line="17" column="50" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#187#188#0" expanded="true" />
-                <element signature="e#214#215#0" expanded="true" />
-                <element signature="e#257#258#0" expanded="true" />
-                <element signature="e#289#290#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
-                <element signature="e#845#846#0" expanded="true" />
-                <element signature="e#1740#1741#0" expanded="true" />
-                <element signature="e#1812#1813#0" expanded="true" />
-                <element signature="e#1991#1992#0" expanded="true" />
-                <element signature="e#2069#2070#0" expanded="true" />
-                <element signature="e#2266#2267#0" expanded="true" />
-                <element signature="e#2366#2367#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -152,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/BuyRate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="170">
+              <caret line="14" column="5" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,10 +138,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+            <state relative-caret-position="183">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,27 +150,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/KyberReponse.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EtherRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="24" />
-              <folding>
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#635#636#0" expanded="true" />
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#911#912#0" expanded="true" />
-                <element signature="e#949#950#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="557">
+              <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rates.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+            <state relative-caret-position="442">
+              <caret line="111" column="28" lean-forward="true" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -213,6 +184,7 @@
       <find>Rate</find>
       <find>i</find>
       <find>web3j</find>
+      <find>KNC</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,19 +207,26 @@
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/Kyber.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Param.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/GasPriceRange.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rate.java" />
         <option value="$PROJECT_DIR$/secret/wallet.json" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rates.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/BuyRate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/KyberReponse.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokenStatusForWallet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/GasPriceRange.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnableTokenDetails.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/SaleRate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/SellRate.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EtherRecord.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnableTokenTransfer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" />
-        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -261,6 +240,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,8 +322,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,10 +339,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -417,8 +396,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.clb-kyber-java-tutorial [build]" />
         <item itemvalue="Application.Application" />
+        <item itemvalue="Gradle.clb-kyber-java-tutorial [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -434,7 +413,8 @@
       <updated>1563001015471</updated>
       <workItem from="1563001021181" duration="39457000" />
       <workItem from="1563315329127" duration="1464000" />
-      <workItem from="1563618653925" duration="26103000" />
+      <workItem from="1563618653925" duration="39244000" />
+      <workItem from="1563784212488" duration="4474000" />
     </task>
     <task id="LOCAL-00001" summary="Bootstrapping">
       <created>1563006623829</created>
@@ -492,11 +472,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563708098571</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Scenarion ETH2KNC completed">
+      <created>1563718831507</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1563718831507</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Scenarion ETH2KNC completed">
+      <created>1563719011507</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1563719011507</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67024000" />
+    <option name="totallyTimeSpent" value="84639000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,18 +506,18 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.26442954" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.22818792" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="2" weight="0.3045326" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="5" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.04249292" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4716714" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.45892352" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.30736545" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3286119" />
@@ -537,6 +531,7 @@
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="PlantUML" order="9" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.3295302" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +545,8 @@
     <MESSAGE value="Kyber BuyRate implemented" />
     <MESSAGE value="Readme updated, some clean up" />
     <MESSAGE value="TradeData method completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="TradeData method completed" />
+    <MESSAGE value="Scenarion ETH2KNC completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scenarion ETH2KNC completed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -563,21 +559,36 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java</url>
-          <line>133</line>
+          <line>158</line>
           <properties />
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java</url>
-          <line>132</line>
+          <line>97</line>
           <properties />
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="sellRate.data" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/clb_kyber_java_tutorial$Application.ic" NAME="Application Coverage Results" MODIFIED="1563741698045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>net.cloudburo.kyber.tutorial.protocol.*</FILTER>
+    </SUITE>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>tokenStatus.getTxs_required()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>rec.getGasPrice()</expression-string>
         <language-id>JAVA</language-id>
@@ -615,11 +626,6 @@
       </expression>
       <expression>
         <expression-string>url + request.getMethod()+qry</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>response.body().source().buffer()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -770,16 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/Kyber3j.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/secret/secret.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -794,33 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#330#331#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#764#765#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/crypto/4.3.1/2d7080315251f11cea4e400862dfa7e3e8c12216/crypto-4.3.1-sources.jar!/org/web3j/crypto/Credentials.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -828,13 +797,6 @@
           <folding>
             <element signature="e#464#465#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/GasPriceRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -856,26 +818,6 @@
             <element signature="e#854#855#0" expanded="true" />
             <element signature="e#883#884#0" expanded="true" />
             <element signature="e#1161#1162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -904,33 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/BuyRate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/KyberReponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -953,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.3.1/5614d05e565296772794ada5c18b47513b2ccd99/core-4.3.1-sources.jar!/org/web3j/protocol/core/JsonRpc2_0Web3j.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/crypto/4.3.1/2d7080315251f11cea4e400862dfa7e3e8c12216/crypto-4.3.1-sources.jar!/org/web3j/crypto/RawTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -967,45 +875,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="198">
+            <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/Kyber3j.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="58" column="68" lean-forward="true" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="68" />
+        <state relative-caret-position="340">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#257#258#0" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#1740#1741#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-            <element signature="e#1991#1992#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2366#2367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.web3j/core/4.3.1/5614d05e565296772794ada5c18b47513b2ccd99/core-4.3.1-sources.jar!/org/web3j/protocol/core/JsonRpc2_0Web3j.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="322" selection-start-line="322" selection-end-line="322" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/GasPriceRange.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rates.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/SellRate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="50" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="111" column="28" lean-forward="true" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EtherRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="65" column="73" selection-start-line="65" selection-start-column="73" selection-end-line="65" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnableTokenTransfer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/BuyRate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="5" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#1148#1149#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="104" selection-start-line="104" selection-end-line="143" selection-end-column="5" />
+        <state relative-caret-position="264">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="147">
-            <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1062,10 +1067,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
+          <last-edited>main|clb-kyber-java-tutorial</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

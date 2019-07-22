@@ -1,7 +1,6 @@
 package net.cloudburo.kyber.tutorial.protocol;
 
 import net.cloudburo.kyber.tutorial.methods.request.GasPriceRange;
-import net.cloudburo.kyber.tutorial.methods.request.Rates;
 import net.cloudburo.kyber.tutorial.methods.request.SingleRate;
 import net.cloudburo.kyber.tutorial.methods.response.*;
 
@@ -55,6 +54,18 @@ public class JsonRpc2_0Kyber implements Kyber3j {
                 BuyRate.class);
     }
 
+    public Request<?, SellRate> sellRate(String id, String qty, boolean onlyOfficialReserve) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),
+                new Param("id",id),new Param("qty",qty),
+                new Param("only_official_reserve", Boolean.valueOf(onlyOfficialReserve).toString()));
+        return new Request<>(
+                "sell_rate",
+                params,
+                web3jService,
+                SellRate.class);
+    }
+
     public  Request<?,TradeData> tradeData(String userAddress, String srcId, String dstId, Float srcQty, Float minDstQty,
                                            GasPriceRange gasPrice, String walletId, boolean onlyOfficialReserve) {
         List<Param> params = List.of(
@@ -81,6 +92,27 @@ public class JsonRpc2_0Kyber implements Kyber3j {
                 params,
                 web3jService,
                 TradeData.class);
+    }
+
+    public Request<?,EnabledTokensForWallet> enabledTokensForWallet(String userAddress) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET));
+        return new Request<>(
+                "users/"+userAddress+"/currencies",
+                params,
+                web3jService,
+                EnabledTokensForWallet.class);
+    }
+
+    public Request<?, EnableTokenTransfer> enableTokenTransfer(String userAddress, String id, GasPriceRange gasPrice) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),
+                new Param("gas_price",gasPrice.name()));
+        return new Request<>(
+                "users/"+userAddress+"/currencies/"+id+"/enable_data",
+                params,
+                web3jService,
+                EnableTokenTransfer.class);
     }
 
     @Override

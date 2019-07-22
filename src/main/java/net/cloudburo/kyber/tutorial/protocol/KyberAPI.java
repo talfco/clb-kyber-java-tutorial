@@ -10,7 +10,10 @@ public interface KyberAPI {
 
     public Request<?, Currencies> currencies();
     public Request<?, BuyRate> buyRate(String id, String qty,boolean onlyOfficialReserve);
+    public Request<?, SellRate> sellRate(String id, String qty, boolean onlyOfficialReserve);
     public Request<?, TradeData> tradeData(String userAddress, SingleRate rate, GasPriceRange gasPrice);
     public Request<?, TradeData> tradeData(String userAddress, String srcId, String dstId, Float srcQty,Float minDstQty,
                                            GasPriceRange gasPrice, String walletId, boolean onlyOfficialReserve);
+    public Request<?,EnabledTokensForWallet> enabledTokensForWallet(String userAddress);
+    public Request<?, EnableTokenTransfer> enableTokenTransfer(String userAddress, String id, GasPriceRange gasPrice);
 }

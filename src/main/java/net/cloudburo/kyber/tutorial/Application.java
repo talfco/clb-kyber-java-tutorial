@@ -1,8 +1,6 @@
 package net.cloudburo.kyber.tutorial;
 
 import java.io.FileReader;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Properties;
 
 import net.cloudburo.kyber.tutorial.methods.request.GasPriceRange;
@@ -22,10 +20,7 @@ import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.Response;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
-import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.Transfer;
-import org.web3j.utils.Convert;
 import org.web3j.utils.Numeric;
 
 
@@ -59,7 +54,7 @@ public class Application {
     private Credentials credentials;
 
     public Application() throws Exception {
-        // We are connecting to Ethereu
+        // We are connecting to Ethereum
         Properties props = new Properties();
         FileReader fi = new FileReader("secret/secret.properties");
         props.load(fi);
@@ -80,20 +75,6 @@ public class Application {
         log.info("Credentials loaded");
     }
 
-
-    private void run() throws Exception {
-        // FIXME: Request some Ether for the Ropsten test network at  https://faucet.ropsten.be
-        log.info("Sending 1 Wei ("
-                + Convert.fromWei("1", Convert.Unit.ETHER).toPlainString() + " Ether)");
-        TransactionReceipt transferReceipt = Transfer.sendFunds(
-                web3j, credentials,
-                "0x8370DA48be315b1F73fdbF206a9A8678234a16a4",  // you can put any address here
-                BigDecimal.ONE, Convert.Unit.WEI)  // 1 wei = 10^-18 Ether
-                .send();
-        log.info("Transaction complete, view it at https://ropsten.infura.io/v3/tx/"
-                + transferReceipt.getTransactionHash());
-    }
-
     private boolean checkForError(Response resp){
         if (resp.hasError()) {
             log.info("Error " + resp.getError().getMessage());
@@ -102,17 +83,59 @@ public class Application {
         return false;
     }
 
-    private void eth2knc() {
+    private void token2eth(String tokenSymbol, String tokenQuantity){
         Kyber3j kyber3j = Kyber3j.build(new KyberService(KyberService.KYBER_ROPSTEN));
         log.info("Connected to Kyber Network: "+KyberService.KYBER_ROPSTEN);
-        // Buy KNC from ETH
         try {
             // Check if token is supported
             Currencies currencies = kyber3j.currencies().send();
-            log.info("Exists Currency KNC: " + currencies.existsCurreny("KNC"));
-            if (!checkForError(currencies) && currencies.existsCurreny("KNC")) {
+            if (!checkForError(currencies) && currencies.existsCurreny(tokenSymbol)) {
+                EnabledTokensForWallet tokens = kyber3j.enabledTokensForWallet(credentials.getAddress()).send();
+                // Check if wallet is enabled for token
+                String tokenId = currencies.getCurrency(tokenSymbol).getId();
+                EnabledTokensForWallet.EnabledTokenStatus tokenStatus = tokens.getEnabledTokenStatus(tokenId);
+                if (!checkForError(tokens) && tokenStatus.isEnabled()) {
+                    if (tokenStatus.getTxs_required() ==  1) {
+                        // Enable Token Transfer
+                        // https://developer.kyber.network/docs/Integrations-RESTfulAPIGuide/#check-and-approve-bat-token-contract
+                        EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
+                                GasPriceRange.medium).send();
+                        executeEthereumTransaction(tokenData.getData());
+                    } else if (tokenStatus.getTxs_required() ==  2){
+                        // TODO Implement validation
+                        log.error("Not implemented for getTxs_required = 2");
+                    }
+                    SellRate sellRate = kyber3j.sellRate(currencies.getCurrency(tokenSymbol).getId(),tokenQuantity,
+                            false).send();
+                    if (!checkForError(sellRate)) {
+                        Rates rates = sellRate.getData().get(0);
+                        SingleRate singleRate = rates.getSingleRate(0);
+                        log.info("Conversion Rates: " + singleRate.getSrc_qty());
+                        singleRate.approximateReceivableToken(0.97);
+                        TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
+                        if (!checkForError(tradeData)) {
+                            executeEthereumTransaction(tradeData.getData().get(0));
+                        }
+                    }
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void eth2token(String tokenSymbol, String tokenQuantity) {
+        Kyber3j kyber3j = Kyber3j.build(new KyberService(KyberService.KYBER_ROPSTEN));
+        log.info("Connected to Kyber Network: "+KyberService.KYBER_ROPSTEN);
+        // ETH2<Token> Swap
+        try {
+            // Check if token is supported
+            Currencies currencies = kyber3j.currencies().send();
+            log.info("Exists Currency"+tokenSymbol+": " + currencies.existsCurreny(tokenSymbol));
+            if (!checkForError(currencies) && currencies.existsCurreny(tokenSymbol)) {
                 // Get buy rates
-                BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency("KNC").getId(),"1",
+                BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency(tokenSymbol).getId(),tokenQuantity,
                         false).send();
                 if (!checkForError(buyRate)) {
                     Rates rates = buyRate.getData().get(0);
@@ -123,18 +146,7 @@ public class Application {
                     singleRate.approximateReceivableToken(0.97);
                     TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
                     if (!checkForError(tradeData)) {
-                        TradeData.TradeDataRecord rec = tradeData.getData().get(0);
-                        RawTransaction rawTransaction = RawTransaction.createTransaction(
-                                rec.getNonceAsBI(),  rec.getGasPriceAsBI(), rec.getGasLimitAsBI(),
-                                rec.getTo(), rec.getValueAsBI(), rec.getData());
-                        byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
-                        String hexValue = Numeric.toHexString(signedMessage);
-                        log.info("Signe Message with Hex Value: "+hexValue);
-                        //EthSendTransaction ethTrx = web3j.ethSendRawTransaction(hexValue).send();
-                        EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
-                        log.info("Executed transaction "+ethSendTransaction.getTransactionHash());
-                        // poll for transaction response via org.web3j.protocol.Web3j.ethGetTransactionReceipt(<txHash>)
-                        return;
+                        executeEthereumTransaction(tradeData.getData().get(0));
                     }
                 }
             }
@@ -143,7 +155,21 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        new Application().eth2knc();
+    private void executeEthereumTransaction(EtherRecord rec) throws Exception {
+        RawTransaction rawTransaction = RawTransaction.createTransaction(
+                rec.getNonceAsBI(), rec.getGasPriceAsBI(), rec.getGasLimitAsBI(),
+                rec.getTo(), rec.getValueAsBI(), rec.getData());
+        byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
+        String hexValue = Numeric.toHexString(signedMessage);
+        log.info("Signe Message with Hex Value: " + hexValue);
+        EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
+        log.info("Executed transaction " + ethSendTransaction.getTransactionHash());
     }
+
+    public static void main(String[] args) throws Exception {
+        new Application().token2eth("DAI","1");
+        // new Application().eth2token("DAI","5");
+    }
+
+
 }
