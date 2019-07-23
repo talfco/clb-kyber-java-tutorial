@@ -83,6 +83,67 @@ public class Application {
         return false;
     }
 
+
+    private void token2token(String tokenSymbolFrom, String tokenSymbolTo, String tokenQuantity) {
+        //Suppose we want to convert 100 BAT to DAI tokens, which is a token to token conversion.
+        // Note that ETH is used as the base pair i.e. BAT -> ETH -> DAI.
+        Kyber3j kyber3j = Kyber3j.build(new KyberService(KyberService.KYBER_ROPSTEN));
+        log.info("Connected to Kyber Network: "+KyberService.KYBER_ROPSTEN);
+        try {
+            Currencies currencies = kyber3j.currencies().send();
+            if (!checkForError(currencies) && currencies.existsCurreny(tokenSymbolFrom)
+                    && currencies.existsCurreny(tokenSymbolTo) ) {
+                EnabledTokensForWallet tokens = kyber3j.enabledTokensForWallet(credentials.getAddress()).send();
+                if (!checkForError(tokens)) {
+                    // Check if wallet is enabled for tokens
+                    String tokenId = currencies.getCurrency(tokenSymbolFrom).getId();
+
+                    EnabledTokensForWallet.EnabledTokenStatus tokenStatus = tokens.getEnabledTokenStatus(tokenId);
+                    if ( tokenStatus.isEnabled()) {
+                        // Check if the sell token is already enabled to be sold by the network on behalf of this user
+                        if (tokenStatus.getTxs_required() == 1) {
+                            EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
+                                    GasPriceRange.medium).send();
+                            executeEthereumTransaction(tokenData.getData());
+                        } else if (tokenStatus.getTxs_required() == 2) {
+                            // TODO Implement validation
+                            log.error("Not implemented for getTxs_required = 2");
+                        }
+                    } else {
+                        log.error("Curreny not supported");
+                        return;
+                    }
+
+                    // Get Sell Rate in ETH: <fromTokenQuantity> -> ETH ?
+                    SellRate sellRate = kyber3j.sellRate(currencies.getCurrency(tokenSymbolFrom).getId(), tokenQuantity,
+                            false).send();
+                    if (!checkForError(sellRate)) {
+                        Rates rates = sellRate.getData().get(0);
+                        SingleRate singleRateFromToken = rates.getSingleRate(0);
+                        Float sellQty = singleRateFromToken.getDst_qty();
+                        log.info(tokenSymbolFrom+" Sell Rate: " + singleRateFromToken.getSrc_qty());
+                        // Get Buy Rate for 1 toToken:  ETH ? -> 1 <toToken>
+                        BuyRate buyRate = kyber3j.buyRate(currencies.getCurrency(tokenSymbolTo).getId(),"1",
+                                false).send();
+                        if (!checkForError(buyRate)) {
+                            rates = buyRate.getData().get(0);
+                            SingleRate singleRateToToken = rates.getSingleRate(0);
+                            Float buyQty = singleRateToToken.getSrc_qty();
+                            Float expectedAmountWithoutSlippage = buyQty / sellQty * Float.valueOf(tokenQuantity);
+                            Float expectedAmountWithSlippage = expectedAmountWithoutSlippage * 0.97f;
+                            singleRateFromToken.setDst_id(singleRateToToken.getDst_id());
+                            singleRateFromToken.setDst_qty(expectedAmountWithSlippage);
+                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRateFromToken, GasPriceRange.medium).send();
+                            if (!checkForError(tradeData)) {
+                                executeEthereumTransaction(tradeData.getData().get(0));
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e){e.printStackTrace();}
+    }
+
     private void token2eth(String tokenSymbol, String tokenQuantity){
         Kyber3j kyber3j = Kyber3j.build(new KyberService(KyberService.KYBER_ROPSTEN));
         log.info("Connected to Kyber Network: "+KyberService.KYBER_ROPSTEN);
@@ -91,38 +152,37 @@ public class Application {
             Currencies currencies = kyber3j.currencies().send();
             if (!checkForError(currencies) && currencies.existsCurreny(tokenSymbol)) {
                 EnabledTokensForWallet tokens = kyber3j.enabledTokensForWallet(credentials.getAddress()).send();
-                // Check if wallet is enabled for token
-                String tokenId = currencies.getCurrency(tokenSymbol).getId();
-                EnabledTokensForWallet.EnabledTokenStatus tokenStatus = tokens.getEnabledTokenStatus(tokenId);
-                if (!checkForError(tokens) && tokenStatus.isEnabled()) {
-                    if (tokenStatus.getTxs_required() ==  1) {
-                        // Enable Token Transfer
-                        // https://developer.kyber.network/docs/Integrations-RESTfulAPIGuide/#check-and-approve-bat-token-contract
-                        EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
-                                GasPriceRange.medium).send();
-                        executeEthereumTransaction(tokenData.getData());
-                    } else if (tokenStatus.getTxs_required() ==  2){
-                        // TODO Implement validation
-                        log.error("Not implemented for getTxs_required = 2");
-                    }
-                    SellRate sellRate = kyber3j.sellRate(currencies.getCurrency(tokenSymbol).getId(),tokenQuantity,
-                            false).send();
-                    if (!checkForError(sellRate)) {
-                        Rates rates = sellRate.getData().get(0);
-                        SingleRate singleRate = rates.getSingleRate(0);
-                        log.info("Conversion Rates: " + singleRate.getSrc_qty());
-                        singleRate.approximateReceivableToken(0.97);
-                        TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
-                        if (!checkForError(tradeData)) {
-                            executeEthereumTransaction(tradeData.getData().get(0));
+                if (!checkForError(tokens)){
+                    // Check if wallet is enabled for token
+                    String tokenId = currencies.getCurrency(tokenSymbol).getId();
+                    EnabledTokensForWallet.EnabledTokenStatus tokenStatus = tokens.getEnabledTokenStatus(tokenId);
+                    if ( tokenStatus.isEnabled()) {
+                        if (tokenStatus.getTxs_required() == 1) {
+                            // Enable Token Transfer
+                            // https://developer.kyber.network/docs/Integrations-RESTfulAPIGuide/#check-and-approve-bat-token-contract
+                            EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
+                                    GasPriceRange.medium).send();
+                            executeEthereumTransaction(tokenData.getData());
+                        } else if (tokenStatus.getTxs_required() == 2) {
+                            // TODO Implement validation
+                            log.error("Not implemented for getTxs_required = 2");
+                        }
+                        SellRate sellRate = kyber3j.sellRate(currencies.getCurrency(tokenSymbol).getId(), tokenQuantity,
+                                false).send();
+                        if (!checkForError(sellRate)) {
+                            Rates rates = sellRate.getData().get(0);
+                            SingleRate singleRate = rates.getSingleRate(0);
+                            log.info("Conversion Rate: " + singleRate.getSrc_qty());
+                            singleRate.approximateReceivableToken(0.97);
+                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
+                            if (!checkForError(tradeData)) {
+                                executeEthereumTransaction(tradeData.getData().get(0));
+                            }
                         }
                     }
                 }
             }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
+        } catch (Exception e){ e.printStackTrace(); }
     }
 
     private void eth2token(String tokenSymbol, String tokenQuantity) {
@@ -140,7 +200,7 @@ public class Application {
                 if (!checkForError(buyRate)) {
                     Rates rates = buyRate.getData().get(0);
                     SingleRate singleRate = rates.getSingleRate(0);
-                    log.info("Conversion Rates: " + singleRate.getSrc_qty());
+                    log.info("Conversion Rate: " + singleRate.getSrc_qty());
                     // Get tradeData
                     // Adjust conversion rates to 97%
                     singleRate.approximateReceivableToken(0.97);
@@ -150,9 +210,7 @@ public class Application {
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     private void executeEthereumTransaction(EtherRecord rec) throws Exception {
@@ -167,8 +225,9 @@ public class Application {
     }
 
     public static void main(String[] args) throws Exception {
-        new Application().token2eth("DAI","1");
-        // new Application().eth2token("DAI","5");
+        //new Application().token2eth("DAI","1");
+        //new Application().eth2token("BAT","1");
+        new Application().token2token("DAI","BAT","0.5");
     }
 
 
