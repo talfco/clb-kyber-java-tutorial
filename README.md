@@ -6,6 +6,7 @@ Repository used for the Kyber Network tutorial, which will be delivered as part 
 
 * 01.07.2019: Initial kick off blog article:  https://dev.cloudburo.net/2019/07/01/dao-project-work-announcement-kyberdao-proposal.html
 * 15.07.2019: Integration approach into web3j library completed and implemented two api methods `currencies` and `buyRate`
+* 24.07.2019: All three scenarios, eth2token, token2eth and token2token implemented, outstanding is the Medium Article
 
 # Introduction
 
@@ -15,7 +16,9 @@ As an implementation strategy an enhancement of the well-known [web3j](https://w
 
 web3j is a highly modular, reactive, type safe Java and Android library for working with Smart Contracts and integrating with clients (nodes) on the Ethereum network.
 
-## Scenario 1: Perform ETH -> KNC (ERC20 token) conversion
+
+
+## Example Scenario: Perform ETH -> KNC (ERC20 token) conversion
 
 The scenario consists of the following step
 
