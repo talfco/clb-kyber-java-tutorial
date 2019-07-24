@@ -129,7 +129,7 @@ public class Application {
                             rates = buyRate.getData().get(0);
                             SingleRate singleRateToToken = rates.getSingleRate(0);
                             Float buyQty = singleRateToToken.getSrc_qty();
-                            Float expectedAmountWithoutSlippage = buyQty / sellQty * Float.valueOf(tokenQuantity);
+                            Float expectedAmountWithoutSlippage = sellQty / buyQty; // * Float.valueOf(tokenQuantity);
                             Float expectedAmountWithSlippage = expectedAmountWithoutSlippage * 0.97f;
                             singleRateFromToken.setDst_id(singleRateToToken.getDst_id());
                             singleRateFromToken.setDst_qty(expectedAmountWithSlippage);
