@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28d1ea52-b761-4cf1-beca-b7c67c232fa6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -74,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="135" selection-start-line="135" selection-end-line="135" />
+            <state relative-caret-position="468">
+              <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#executeEthereumTransaction#0;class#Application#0" />
@@ -85,9 +86,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-170">
+                <caret line="8" column="118" selection-start-line="8" selection-start-column="118" selection-end-line="8" selection-end-column="118" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="1020">
               <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -99,12 +112,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
+            <state relative-caret-position="629">
               <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
-                <element signature="e#968#969#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
-                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1201#1202#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="221">
               <caret line="17" column="50" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -125,7 +136,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="425">
               <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding>
                 <element signature="e#827#828#0" expanded="true" />
@@ -138,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="111" column="28" lean-forward="true" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+            <state relative-caret-position="1734">
+              <caret line="111" column="28" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -190,7 +201,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/Rates.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/BuyRate.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/KyberReponse.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokenStatusForWallet.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/Currencies.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/GasPriceRange.java" />
@@ -203,14 +213,16 @@
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/TradeData.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnableTokenTransfer.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="70" />
-    <option name="width" value="1685" />
-    <option name="height" value="1040" />
+    <option name="x" value="-214" />
+    <option name="y" value="46" />
+    <option name="width" value="1808" />
+    <option name="height" value="994" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -218,18 +230,12 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="clb-kyber-java-tutorial" type="b2602c69:ProjectViewProjectNode" />
               <item name="clb-kyber-java-tutorial" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="clb-kyber-java-tutorial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="clb-kyber-java-tutorial" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="secret" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="clb-kyber-java-tutorial" type="b2602c69:ProjectViewProjectNode" />
@@ -249,10 +255,28 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="clb-kyber-java-tutorial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clb-kyber-java-tutorial" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="clb-kyber-java-tutorial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="clb-kyber-java-tutorial" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="protocol" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,7 +369,8 @@
       <workItem from="1563001021181" duration="39457000" />
       <workItem from="1563315329127" duration="1464000" />
       <workItem from="1563618653925" duration="39244000" />
-      <workItem from="1563784212488" duration="17951000" />
+      <workItem from="1563784212488" duration="19094000" />
+      <workItem from="1564089973072" duration="816000" />
     </task>
     <task id="LOCAL-00001" summary="Bootstrapping">
       <created>1563006623829</created>
@@ -431,11 +456,32 @@
       <option name="project" value="LOCAL" />
       <updated>1563879917354</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed the expecteAmount calculation">
+      <created>1563964957149</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1563964957149</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Updated README">
+      <created>1563965074412</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1563965074412</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated README">
+      <created>1563965128835</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1563965128835</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98116000" />
+    <option name="totallyTimeSpent" value="100075000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -448,6 +494,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Designer" order="1" />
@@ -461,7 +508,7 @@
       <window_info anchor="bottom" id="Docker" order="5" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.3753541" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.4003021" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.42492917" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
@@ -493,7 +540,9 @@
     <MESSAGE value="Scenarion ETH2KNC completed" />
     <MESSAGE value="Scenario Token2ETH worked" />
     <MESSAGE value="Scenario Token2Token completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scenario Token2Token completed" />
+    <MESSAGE value="Fixed the expecteAmount calculation" />
+    <MESSAGE value="Updated README" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated README" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,16 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="198">
-            <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/Kyber3j.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -859,26 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="111" column="28" lean-forward="true" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -930,9 +949,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#1201#1202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="50" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/request/SingleRate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="425">
           <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
           <folding>
             <element signature="e#827#828#0" expanded="true" />
@@ -941,32 +990,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/methods/response/EnabledTokensForWallet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/JsonRpc2_0Kyber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/protocol/KyberService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="88" column="34" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
+        <state relative-caret-position="1734">
+          <caret line="111" column="28" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-170">
+            <caret line="8" column="118" selection-start-line="8" selection-start-column="118" selection-end-line="8" selection-end-column="118" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/cloudburo/kyber/tutorial/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="135" selection-start-line="135" selection-end-line="135" />
+        <state relative-caret-position="468">
+          <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#executeEthereumTransaction#0;class#Application#0" />

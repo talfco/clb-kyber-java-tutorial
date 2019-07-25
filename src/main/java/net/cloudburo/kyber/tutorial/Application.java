@@ -225,8 +225,8 @@ public class Application {
     }
 
     public static void main(String[] args) throws Exception {
-        //new Application().token2eth("DAI","1");
-        //new Application().eth2token("BAT","1");
+        new Application().eth2token("DAI","2");
+        new Application().token2eth("DAI","1");
         new Application().token2token("DAI","BAT","0.5");
     }
 
