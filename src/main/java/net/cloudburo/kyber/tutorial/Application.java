@@ -103,14 +103,12 @@ public class Application {
                 if (!checkForError(tokens)) {
                     // Check if wallet is enabled for tokens
                     String tokenId = currencies.getCurrency(tokenSymbolFrom).getId();
-
                     EnabledTokensForWallet.EnabledTokenStatus tokenStatus = tokens.getEnabledTokenStatus(tokenId);
                     if ( tokenStatus.isEnabled()) {
                         // Check if the sell token is already enabled to be sold by the network on behalf of this user
                         if (tokenStatus.getTxs_required() == 1) {
                             EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
                                     GasPriceRange.medium).send();
-
                             executeEthereumTransaction(tokenData.getData());
                         } else if (tokenStatus.getTxs_required() == 2) {
                             // TODO Implement validation
@@ -120,7 +118,6 @@ public class Application {
                         log.error("Curreny not supported");
                         return;
                     }
-
                     // Get Sell Rate in ETH: <fromTokenQuantity> -> ETH ?
                     SellRate sellRate = kyber3j.sellRate(currencies.getCurrency(tokenSymbolFrom).getId(), tokenQuantity,
                             false).send();
