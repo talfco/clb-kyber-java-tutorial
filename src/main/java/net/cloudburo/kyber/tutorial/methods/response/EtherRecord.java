@@ -1,5 +1,7 @@
 package net.cloudburo.kyber.tutorial.methods.response;
 
+import org.bouncycastle.util.test.FixedSecureRandom;
+
 import java.math.BigInteger;
 
 public class EtherRecord {
@@ -58,6 +60,12 @@ public class EtherRecord {
     public BigInteger getNonceAsBI() { return new BigInteger( nonce.substring(2),16);}
 
     public void setNonce(String nonce) { this.nonce = nonce; }
+
+    public void incrementNonceByOne() {
+        BigInteger bi = getNonceAsBI();
+        bi.add(BigInteger.valueOf(1));
+        setNonce("0x"+bi.toString(16));
+    }
 
     public String getGasLimit() { return gasLimit;
     }

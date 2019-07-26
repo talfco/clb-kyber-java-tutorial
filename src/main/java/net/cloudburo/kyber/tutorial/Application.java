@@ -1,6 +1,7 @@
 package net.cloudburo.kyber.tutorial;
 
 import java.io.FileReader;
+import java.math.BigInteger;
 import java.util.Properties;
 
 import net.cloudburo.kyber.tutorial.methods.request.GasPriceRange;
@@ -18,7 +19,9 @@ import org.web3j.crypto.RawTransaction;
 import org.web3j.crypto.TransactionEncoder;
 import org.web3j.crypto.WalletUtils;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.Response;
+import org.web3j.protocol.core.methods.response.EthGetTransactionCount;
 import org.web3j.protocol.core.methods.response.EthSendTransaction;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Numeric;
@@ -52,6 +55,7 @@ public class Application {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
     private Web3j web3j;
     private Credentials credentials;
+    private BigInteger nonce;
 
     public Application() throws Exception {
         // We are connecting to Ethereum
@@ -64,15 +68,17 @@ public class Application {
                 "https://ropsten.infura.io/v3/"+props.get("infura-token")));  // FIXME: Enter your Infura token here;
         log.info("Connected to Ethereum client version: "
                 + web3j.web3ClientVersion().send().getWeb3ClientVersion());
-
         String pw = (String)props.get("wallet-password");
-        // We then need to load our Ethereum wallet file
-        // FIXME: Generate a new wallet file using the web3j command line tools https://docs.web3j.io/command_line.html
+        // We load the credentials from our wallet file
         credentials =
                 WalletUtils.loadCredentials(
                         pw,
                         "secret/wallet.json");
         log.info("Credentials loaded");
+        EthGetTransactionCount ethGetTransactionCount = web3j.ethGetTransactionCount(
+                credentials.getAddress(), DefaultBlockParameterName.LATEST).sendAsync().get();
+        nonce = ethGetTransactionCount.getTransactionCount();
+        log.info("Latest TransactionCount: "+nonce);
     }
 
     private boolean checkForError(Response resp){
@@ -104,6 +110,7 @@ public class Application {
                         if (tokenStatus.getTxs_required() == 1) {
                             EnableTokenTransfer tokenData = kyber3j.enableTokenTransfer(credentials.getAddress(), tokenId,
                                     GasPriceRange.medium).send();
+
                             executeEthereumTransaction(tokenData.getData());
                         } else if (tokenStatus.getTxs_required() == 2) {
                             // TODO Implement validation
@@ -133,7 +140,7 @@ public class Application {
                             Float expectedAmountWithSlippage = expectedAmountWithoutSlippage * 0.97f;
                             singleRateFromToken.setDst_id(singleRateToToken.getDst_id());
                             singleRateFromToken.setDst_qty(expectedAmountWithSlippage);
-                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRateFromToken, GasPriceRange.medium).send();
+                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRateFromToken, GasPriceRange.medium, nonce).send();
                             if (!checkForError(tradeData)) {
                                 executeEthereumTransaction(tradeData.getData().get(0));
                             }
@@ -174,7 +181,7 @@ public class Application {
                             SingleRate singleRate = rates.getSingleRate(0);
                             log.info("Conversion Rate: " + singleRate.getSrc_qty());
                             singleRate.approximateReceivableToken(0.97);
-                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
+                            TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium,nonce).send();
                             if (!checkForError(tradeData)) {
                                 executeEthereumTransaction(tradeData.getData().get(0));
                             }
@@ -204,7 +211,7 @@ public class Application {
                     // Get tradeData
                     // Adjust conversion rates to 97%
                     singleRate.approximateReceivableToken(0.97);
-                    TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium).send();
+                    TradeData tradeData = kyber3j.tradeData(credentials.getAddress(), singleRate, GasPriceRange.medium,nonce).send();
                     if (!checkForError(tradeData)) {
                         executeEthereumTransaction(tradeData.getData().get(0));
                     }
@@ -219,15 +226,24 @@ public class Application {
                 rec.getTo(), rec.getValueAsBI(), rec.getData());
         byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);
         String hexValue = Numeric.toHexString(signedMessage);
-        log.info("Signe Message with Hex Value: " + hexValue);
         EthSendTransaction ethSendTransaction = web3j.ethSendRawTransaction(hexValue).sendAsync().get();
-        log.info("Executed transaction " + ethSendTransaction.getTransactionHash());
+        log.info("Executed transaction with nonce "+rec.getNonceAsBI()+": "+ ethSendTransaction.getTransactionHash());
+        nonce = nonce.add(BigInteger.valueOf(1));
     }
 
+
+
     public static void main(String[] args) throws Exception {
-        new Application().eth2token("DAI","2");
-        new Application().token2eth("DAI","1");
-        new Application().token2token("DAI","BAT","0.5");
+        Application app = new Application();
+        log.info(">>> SCENARIO: ETH2TOKEN");
+        Thread.sleep(3000);
+        app.eth2token("DAI","2");
+        log.info(">>> SCENARIO: TOKEN2ETH");
+        Thread.sleep(3000);
+        app.token2eth("DAI","1");
+        log.info(">>> SCENARIO: TOKEN2TOKEN");
+        Thread.sleep(3000);
+        app.token2token("DAI","BAT","0.5");
     }
 
 

@@ -8,6 +8,7 @@ import org.web3j.protocol.Web3jService;
 import org.web3j.protocol.core.Request;
 import org.web3j.utils.Async;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -93,6 +94,21 @@ public class JsonRpc2_0Kyber implements Kyber3j {
                 web3jService,
                 TradeData.class);
     }
+
+    public  Request<?,TradeData> tradeData(String userAddress, SingleRate rate, GasPriceRange gasPrice, BigInteger nonce) {
+        List<Param> params = List.of(
+                new Param("op",Param.OPS_GET),new Param("user_address",userAddress),
+                new Param("src_id", rate.getSrc_id()), new Param("dst_id", rate.getDst_id()),
+                new Param("src_qty", rate.getSrc_qty().toString()),  new Param("min_dst_qty", rate.getDst_qty().toString()),
+                new Param("gas_price",gasPrice.name()),
+                new Param("nonce",nonce.toString()));
+        return new Request<>(
+                "trade_data",
+                params,
+                web3jService,
+                TradeData.class);
+    }
+
 
     public Request<?,EnabledTokensForWallet> enabledTokensForWallet(String userAddress) {
         List<Param> params = List.of(
